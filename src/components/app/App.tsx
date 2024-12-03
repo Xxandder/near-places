@@ -1,7 +1,11 @@
 import React from 'react';
 
-const App = () => {
-    return <div>Hello, world!</div>;
+import { PlacesForm } from '../places-form/PlacesForm';
+
+const App: React.FC = () => {
+    return <>
+        <PlacesForm/>
+    </>;
   };
 
 export { App };
