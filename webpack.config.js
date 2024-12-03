@@ -8,5 +8,14 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      }
+    ]
   }
 };
