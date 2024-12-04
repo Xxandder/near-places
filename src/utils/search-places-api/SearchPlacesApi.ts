@@ -1,5 +1,5 @@
 import { HTTPMethod } from "../../enums/enums"
-import { type Coordinates, type Place} from "../../types/types"
+import { type RawPlace, type Coordinates} from "../../types/types"
 import { type PlacesResponse } from "./types/types"
 import { BaseApi } from "../base-api/BaseApi"
 import { SearchPlacesApiPath } from "./enums/search-places-api-path.enum"
@@ -16,7 +16,7 @@ class SearchPlacesApi extends BaseApi{
         coordinates: Coordinates, 
         limit=MAX_AMOUNT_OF_PLACES, 
         radius=RADIUS
-    ): Promise<Place[]>{
+    ): Promise<RawPlace[]>{
         const headers = new Headers()
         headers.append('Authorization', API_KEY)
 
