@@ -4,8 +4,8 @@ import { placesNearby } from '../../services/places-nearby/palces-nearby';
 import * as styles from './styles.module.css';
 
 const PlacesForm: React.FC = () => {
-    const [latitude, setLatitude] = useState(0);
-    const [longitude, setLongitude] = useState(0)
+    const [latitude, setLatitude] = useState(50.396171);
+    const [longitude, setLongitude] = useState(30.509681)
 
     const handleFormSubmission = async (event: FormEvent) => {
         event.preventDefault()
