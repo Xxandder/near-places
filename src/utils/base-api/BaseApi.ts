@@ -46,7 +46,7 @@ class BaseApi {
             if(index !== 0){
                 fullUrl += '&'
             }
-            fullUrl += queryParams[param]
+            fullUrl += `${param}=${queryParams[param]}`
         })
         return fullUrl
     }
