@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { PlacesItem } from '../places-item/PlacesItem';
 import { Place } from '../../../../types/types';
 
+import * as styles from './styles.module.css';
+
 const PlacesItems: React.FC<{places: Place[]}> = ({places}) => {
  
-   return  <div>
+   return  <div className={styles['places-container']}>
         {places.map(place=>{
             return <PlacesItem {...place}/>
         })}
