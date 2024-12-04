@@ -16,7 +16,11 @@ class PlacesNearby {
                 return []
             }
             const processedPlaces = this.processRawPlaces(coordinates, rawPlaces)
-            return processedPlaces
+            
+            const sortedPlaces = processedPlaces.sort((a, b)=> {
+               return a.distance - b.distance
+            })
+            return sortedPlaces
         }catch(e){
             return e as Error
         }

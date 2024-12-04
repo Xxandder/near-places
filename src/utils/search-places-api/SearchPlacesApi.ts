@@ -57,7 +57,7 @@ class SearchPlacesApi extends BaseApi{
         while(responseJson.results.length < MIN_AMOUNT_OF_PLACES)
         const results: PlacesResponse['results'] = (responseJson as PlacesResponse).results
         
-        const places = placesApiMapper(results.slice(0, -MAX_AMOUNT_OF_PLACES))
+        const places = placesApiMapper(results.slice(0, MAX_AMOUNT_OF_PLACES))
         return places
     }
 
