@@ -2,7 +2,7 @@ import { HTTPMethod } from "../../enums/enums"
 import { PlacesResponse, type Coordinates } from "../../types/types"
 import { BaseApi } from "../base-api/BaseApi"
 import { SearchPlacesApiPath } from "./enums/search-places-api-path.enum"
-import { API_KEY } from "./constants/constants"
+import { API_KEY, MAX_AMOUNT_OF_PLACES, RADIUS } from "./constants/constants"
 
 class SearchPlacesApi extends BaseApi{
 
@@ -10,7 +10,11 @@ class SearchPlacesApi extends BaseApi{
         super(baseUrl)
     }
 
-    async getPlacesNearby(coordinates: Coordinates){
+    async getPlacesNearby(
+        coordinates: Coordinates, 
+        limit=MAX_AMOUNT_OF_PLACES, 
+        radius=RADIUS
+    ){
         const headers = new Headers()
         headers.append('Authorization', API_KEY)
 
@@ -21,7 +25,9 @@ class SearchPlacesApi extends BaseApi{
             headers,
             queryParams: {
                 latitude: `${coordinates.latitude}`,
-                longitude: `${coordinates.longitude}`
+                longitude: `${coordinates.longitude}`,
+                limit: `${limit}`,
+                radius: `${radius}`
             }
         })
         if(!response.ok){
