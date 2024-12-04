@@ -1,9 +1,14 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { placesNearby } from '../../../services/places-nearby/palces-nearby';
+import { placesNearby } from '../../../../services/places-nearby/palces-nearby';
 
 import * as styles from './styles.module.css';
+import { Place } from '../../../../types/types';
 
-const PlacesForm: React.FC = () => {
+type Props = {
+    setNearbyPlaces: (places: Place[]) => void
+}
+
+const PlacesForm: React.FC<Props> = ({setNearbyPlaces}) => {
     const [latitude, setLatitude] = useState(50.396171);
     const [longitude, setLongitude] = useState(30.509681)
 
@@ -11,7 +16,9 @@ const PlacesForm: React.FC = () => {
         event.preventDefault()
 
         const placesNearbyResponse = await placesNearby.getPlacesNearby({latitude, longitude})
-
+        
+        setNearbyPlaces(placesNearbyResponse as Place[])
+        
         console.log(placesNearbyResponse)
     }
 
