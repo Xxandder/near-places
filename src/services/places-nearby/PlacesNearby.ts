@@ -15,8 +15,6 @@ class PlacesNearby {
             if(!rawPlaces.length){
                 return []
             }
-            
-
             const processedPlaces = this.processRawPlaces(coordinates, rawPlaces)
             return processedPlaces
         }catch(e){
@@ -26,11 +24,15 @@ class PlacesNearby {
 
     processRawPlaces(personCoordinates: Coordinates, places: RawPlace[]): Place[]{
         const processedPlaces = places.map(place=>{
-            return {
+            const processedPlace: Place = {
                 name: place.name,
                 coordinates: place.coordinates,
                 distance: place.distance || this.getDistance(personCoordinates, place.coordinates)
             }
+            if(place.category){
+                processedPlace.category = place.category
+            } 
+            return processedPlace
         })
         return processedPlaces
     }
