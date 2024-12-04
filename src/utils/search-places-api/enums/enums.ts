@@ -1,1 +1,1 @@
-export { SearchPlacesApiPAth } from './search-places-api-path.enum'
+export { SearchPlacesApiPath } from './search-places-api-path.enum'

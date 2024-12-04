@@ -11,13 +11,19 @@ class BaseApi {
         this.baseUrl = baseUrl
     }
 
-    protected async load(
+    protected async load({
+        path,
+        method,
+        payload,
+        headers,
+        queryParams
+    }:{
         path: string,
         method: ValueOf<typeof HTTPMethod>,
         payload: BodyInit | null,
         headers: Headers,
         queryParams: queryParamsType
-    ){
+    }){
         const fullUrl = this.getFullEndpoint(path, queryParams)
 
         const response = await fetch(fullUrl, {
