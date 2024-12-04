@@ -26,8 +26,7 @@ class SearchPlacesApi extends BaseApi{
             payload: null,
             headers,
             queryParams: {
-                latitude: `${coordinates.latitude}`,
-                longitude: `${coordinates.longitude}`,
+                ll: `${coordinates.latitude}%2C${coordinates.longitude}`,
                 limit: `${limit}`,
                 radius: `${radius}`
             }
