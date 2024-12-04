@@ -1,5 +1,5 @@
 import { HTTPMethod } from "../../enums/enums"
-import { type Coordinates } from "../../types/types"
+import { PlacesResponse, type Coordinates } from "../../types/types"
 import { BaseApi } from "../base-api/BaseApi"
 import { SearchPlacesApiPath } from "./enums/search-places-api-path.enum"
 
@@ -11,7 +11,7 @@ class SearchPlacesApi extends BaseApi{
 
     async getPlacesNearby(coordinates: Coordinates){
 
-        const places = await this.load({
+        const response = await this.load({
             path:  SearchPlacesApiPath.PLACES_NEARBY,
             method: HTTPMethod.GET,
             payload: null,
@@ -21,7 +21,8 @@ class SearchPlacesApi extends BaseApi{
                 longitude: `${coordinates.longitude}`
             }
         })
-
+        
+        const places = (await response.json()) as PlacesResponse
         return places
     }
 
