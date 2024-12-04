@@ -10,9 +10,9 @@ class PlacesNearby {
     async getPlacesNearby(coordinates: Coordinates): Promise<Place[] | RequestError>{
         // TODO coordinates validation
         try{
-            const response: PlacesResponse = await searchPlacesApi.getPlacesNearby(coordinates);
-            const processedPlaces = this.processPlacesNearby(response)
-            return processedPlaces
+            const rawPlaces: Place[] = await searchPlacesApi.getPlacesNearby(coordinates);
+           
+            return rawPlaces
         }catch(e){
             return {
                 message: (e as Error).message
@@ -20,20 +20,7 @@ class PlacesNearby {
         }
     }
 
-    async processPlacesNearby(places: PlacesResponse): Promise<Place[]>{
-        const processedPlaces = places.results.map(place=>{
-            return {
-                name: place.name,
-                distance: place.distance,
-                coordinates: {
-                    latitude: place.geocodes.main.latitude,
-                    longitude: place.geocodes.main.longitude
-                },
-                category: place.categories && place.categories[0].name
-            }
-        })
-        return processedPlaces;
-    }
+  
 
     // TODO method for processing raw data
 }

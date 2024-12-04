@@ -1,8 +1,9 @@
 import { HTTPMethod } from "../../enums/enums"
-import { PlacesResponse, type Coordinates } from "../../types/types"
+import { PlacesResponse, type Coordinates, type Place} from "../../types/types"
 import { BaseApi } from "../base-api/BaseApi"
 import { SearchPlacesApiPath } from "./enums/search-places-api-path.enum"
 import { API_KEY, MAX_AMOUNT_OF_PLACES, RADIUS } from "./constants/constants"
+import { placesApiMapper } from "./mappers/places-api-response.mapper"
 
 class SearchPlacesApi extends BaseApi{
 
@@ -14,7 +15,7 @@ class SearchPlacesApi extends BaseApi{
         coordinates: Coordinates, 
         limit=MAX_AMOUNT_OF_PLACES, 
         radius=RADIUS
-    ){
+    ): Promise<Place[]>{
         const headers = new Headers()
         headers.append('Authorization', API_KEY)
 
@@ -34,8 +35,7 @@ class SearchPlacesApi extends BaseApi{
             const errorData = await response.json()
             throw new Error(errorData.message || 'Something went wrong')
         }
-        
-        const places = (await response.json()) as PlacesResponse
+        const places = placesApiMapper((await response.json()) as PlacesResponse)
         return places
     }
 
