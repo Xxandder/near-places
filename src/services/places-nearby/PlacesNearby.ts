@@ -7,17 +7,20 @@ type RequestError = {
 
 class PlacesNearby {
 
-    async getPlacesNearby(coordinates: Coordinates): Promise<Place[] | RequestError>{
+    async getPlacesNearby(coordinates: Coordinates): Promise<Place[] | Error>{
         // TODO coordinates validation
         try{
             const rawPlaces: RawPlace[] = await searchPlacesApi.getPlacesNearby(coordinates);
             
+            if(!rawPlaces.length){
+                return []
+            }
+            
+
             const processedPlaces = this.processRawPlaces(coordinates, rawPlaces)
             return processedPlaces
         }catch(e){
-            return {
-                message: (e as Error).message
-            }
+            return e as Error
         }
     }
 

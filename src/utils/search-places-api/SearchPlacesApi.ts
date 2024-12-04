@@ -48,14 +48,13 @@ class SearchPlacesApi extends BaseApi{
             }
             responseJson = await response.json();
 
-            if(currentRadius > MAX_RADIUS){
+            if(currentRadius >= MAX_RADIUS){
                 break;
             }
             currentRadius = currentRadius * RADIUS_MULTIPLIER > MAX_RADIUS ? 
                 MAX_RADIUS : Math.round(currentRadius * RADIUS_MULTIPLIER)
         }
         while(responseJson.results.length < MIN_AMOUNT_OF_PLACES)
-        
         const places = placesApiMapper(responseJson as PlacesResponse)
         return places
     }
