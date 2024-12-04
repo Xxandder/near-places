@@ -1,4 +1,4 @@
-import { Coordinates, Place, PlacesResponse } from "../../types/types";
+import { Coordinates, Place } from "../../types/types";
 import { searchPlacesApi } from "../../utils/search-places-api/search-places-api";
 
 type RequestError = {
@@ -11,7 +11,7 @@ class PlacesNearby {
         // TODO coordinates validation
         try{
             const rawPlaces: Place[] = await searchPlacesApi.getPlacesNearby(coordinates);
-           
+            
             return rawPlaces
         }catch(e){
             return {

@@ -1,5 +1,6 @@
 import { HTTPMethod } from "../../enums/enums"
-import { PlacesResponse, type Coordinates, type Place} from "../../types/types"
+import { type Coordinates, type Place} from "../../types/types"
+import { type PlacesResponse } from "./types/types"
 import { BaseApi } from "../base-api/BaseApi"
 import { SearchPlacesApiPath } from "./enums/search-places-api-path.enum"
 import { API_KEY, MAX_AMOUNT_OF_PLACES, RADIUS } from "./constants/constants"

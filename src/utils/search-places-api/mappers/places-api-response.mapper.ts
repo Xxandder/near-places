@@ -1,4 +1,5 @@
-import { PlacesResponse, Place } from "../../../types/types";
+import { Place } from "../../../types/types";
+import { PlacesResponse } from "../types/types";
 
 const placesApiMapper = (places: PlacesResponse): Place[] => {
     const mappedPlaces = places.results.map(place=>{
