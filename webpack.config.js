@@ -20,16 +20,16 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
+        use: ["style-loader", "css-loader"],
+      }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
-    new MiniCssExtractPlugin({
-        filename: "[name].[contenthash].css",
-      }),
+    // new MiniCssExtractPlugin({
+    //     filename: "[name].[contenthash].css",
+    //   }),
   ]
 };
