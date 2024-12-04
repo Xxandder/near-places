@@ -11,7 +11,7 @@ class BaseApi {
         this.baseUrl = baseUrl
     }
 
-    public async load(
+    protected async load(
         path: string,
         method: ValueOf<typeof HTTPMethod>,
         payload: BodyInit | null,
