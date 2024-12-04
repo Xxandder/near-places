@@ -8,4 +8,4 @@ const App: React.FC = () => {
     </>;
   };
 
-export { App };
+export { App }; 
