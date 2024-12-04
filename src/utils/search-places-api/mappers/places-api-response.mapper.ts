@@ -1,8 +1,8 @@
 import { Place } from "../../../types/types";
 import { PlacesResponse } from "../types/types";
 
-const placesApiMapper = (places: PlacesResponse): Place[] => {
-    const mappedPlaces = places.results.map(place=>{
+const placesApiMapper = (places: PlacesResponse['results']): Place[] => {
+    const mappedPlaces = places.map(place=>{
         return {
             name: place.name,
             distance: place.distance,

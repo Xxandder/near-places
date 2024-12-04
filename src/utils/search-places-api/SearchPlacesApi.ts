@@ -55,7 +55,9 @@ class SearchPlacesApi extends BaseApi{
                 MAX_RADIUS : Math.round(currentRadius * RADIUS_MULTIPLIER)
         }
         while(responseJson.results.length < MIN_AMOUNT_OF_PLACES)
-        const places = placesApiMapper(responseJson as PlacesResponse)
+        const results: PlacesResponse['results'] = (responseJson as PlacesResponse).results
+        
+        const places = placesApiMapper(results.slice(0, -MAX_AMOUNT_OF_PLACES))
         return places
     }
 
