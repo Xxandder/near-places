@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { PlacesForm } from '../places-form/PlacesForm';
+import { NearbyPlaces } from '../../pages/nearby-palces/NearbyPlaces';
 
 const App: React.FC = () => {
     return <>
-        <PlacesForm/>
+        <NearbyPlaces/>
     </>;
   };
 

@@ -1,5 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { placesNearby } from '../../services/places-nearby/palces-nearby';
+import { placesNearby } from '../../../services/places-nearby/palces-nearby';
 
 import * as styles from './styles.module.css';
 
