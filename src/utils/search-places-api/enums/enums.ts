@@ -1,0 +1,1 @@
+export { SearchPlacesApiPAth } from './search-places-api-path.enum'
