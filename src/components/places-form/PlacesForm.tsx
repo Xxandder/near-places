@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
+import { placesNearby } from '../../services/places-nearby/palces-nearby';
 
 import * as styles from './styles.module.css';
 
@@ -6,9 +7,17 @@ const PlacesForm: React.FC = () => {
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0)
 
+    const handleFormSubmission = async (event: FormEvent) => {
+        event.preventDefault()
+
+        const placesNearbyResponse = await placesNearby.getPlacesNearby({latitude, longitude})
+
+        console.log(placesNearbyResponse)
+    }
+
     return <div className={styles['container']}>
         <h2 className={styles['heading']}>Find nearest Places</h2>
-        <form action="" className={styles['form']}>
+        <form action="" className={styles['form']} onSubmit={handleFormSubmission}>
             <div className={styles['field']}>
                 <label htmlFor="latitude" className={styles['label']}>
                     Latitude

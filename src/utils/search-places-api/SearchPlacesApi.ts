@@ -15,7 +15,7 @@ class SearchPlacesApi extends BaseApi{
             path:  SearchPlacesApiPath.PLACES_NEARBY,
             method: HTTPMethod.GET,
             payload: null,
-            headers: new Headers,
+            headers: new Headers(),
             queryParams: {
                 latitude: `${coordinates.latitude}`,
                 longitude: `${coordinates.longitude}`
