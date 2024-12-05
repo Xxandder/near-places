@@ -10,8 +10,8 @@ type Props = {
 }
 
 const PlacesForm: React.FC<Props> = ({setNearbyPlaces, setIsError}) => {
-    const [latitude, setLatitude] = useState(50.396171);
-    const [longitude, setLongitude] = useState(30.509681)
+    const [latitude, setLatitude] = useState(50.449720);
+    const [longitude, setLongitude] = useState(30.525077)
 
     const handleFormSubmission = async (event: FormEvent) => {
         event.preventDefault()
