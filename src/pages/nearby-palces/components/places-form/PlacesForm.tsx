@@ -19,8 +19,9 @@ const PlacesForm: React.FC<Props> = ({setNearbyPlaces, setIsError}) => {
         try{
             const placesNearbyResponse = await placesNearby.getPlacesNearby({latitude, longitude})
             setNearbyPlaces(placesNearbyResponse as Place[])
+            setIsError(false)
         }catch(e){
-            setIsError(true) 
+            setIsError(true)
         } 
     }
 

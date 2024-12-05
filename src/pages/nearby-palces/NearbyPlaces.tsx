@@ -5,6 +5,7 @@ import { PlacesForm } from './components/places-form/PlacesForm';
 
 import { Place } from '../../types/place.type';
 import { PlacesItems } from './components/places-items/PlacesItems';
+import { PlaceError } from './components/places-error/PlacesError'
 
 const NearbyPlaces: React.FC = () => {
    const [nearbyPlaces, setNearbyPlaces] = useState<Place[]>([])
@@ -12,8 +13,10 @@ const NearbyPlaces: React.FC = () => {
 
    return  <div>
       <PlacesForm setNearbyPlaces={setNearbyPlaces} setIsError={setIsError}/>
-      {isError ? 
-         <div>Something went wrong</div> :
+      {isError || !nearbyPlaces.length ? 
+         <PlaceError message={nearbyPlaces.length ?
+             "Something went wrong" :
+              "No results found"}/> :
          <PlacesItems places={nearbyPlaces}/>
       }
       
