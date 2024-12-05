@@ -9,7 +9,7 @@ class PlacesNearby {
 
     async getPlacesNearby(coordinates: Coordinates): Promise<Place[] | Error>{
         // TODO coordinates validation
-        console.log('here1')
+
         const rawPlaces: RawPlace[] = await searchPlacesApi.getPlacesNearby(coordinates);
         
         if(!rawPlaces.length){
@@ -29,11 +29,10 @@ class PlacesNearby {
             const processedPlace: Place = {
                 name: place.name,
                 coordinates: place.coordinates,
-                distance: place.distance || this.getDistance(personCoordinates, place.coordinates)
+                distance: place.distance ?? this.getDistance(personCoordinates, place.coordinates),
+                ...(place.category && {category: place.category}),
+                ...(place.address && {address: place.address})
             }
-            if(place.category){
-                processedPlace.category = place.category
-            } 
             return processedPlace
         })
         return processedPlaces

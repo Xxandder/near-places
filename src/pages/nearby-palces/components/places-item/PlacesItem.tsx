@@ -7,7 +7,8 @@ const PlacesItem: React.FC<Place> = ({
         name, 
         distance, 
         category, 
-        coordinates
+        coordinates,
+        address
     }) => { 
         
    return  <div className={styles['place-item']}>
@@ -18,6 +19,7 @@ const PlacesItem: React.FC<Place> = ({
             <p className={styles['place-coordinate']}>Longitude: {coordinates.longitude}</p>
         </div>
         {category && <p>{category}</p>}
+        {address && <p>{address}</p>}
    </div>
   
   };

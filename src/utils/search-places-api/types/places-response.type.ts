@@ -13,7 +13,7 @@ type PlacesResultItem = {
         }
     },
     location: {
-        address: string
+        formatted_address: string
     },
     name: string,
 }

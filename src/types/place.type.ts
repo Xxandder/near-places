@@ -4,7 +4,8 @@ type Place = {
     name: string,
     distance: number,
     coordinates: Coordinates
-    category?: string
+    category?: string,
+    address?: string
 }
 
 export { type Place };

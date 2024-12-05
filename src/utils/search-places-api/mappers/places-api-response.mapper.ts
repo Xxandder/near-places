@@ -1,7 +1,7 @@
-import { Place } from "../../../types/types";
+import { Place, RawPlace } from "../../../types/types";
 import { PlacesResponse } from "../types/types";
 
-const placesApiMapper = (places: PlacesResponse['results']): Place[] => {
+const placesApiMapper = (places: PlacesResponse['results']): RawPlace[] => {
     const mappedPlaces = places.map(place=>{
         return {
             name: place.name,
@@ -10,7 +10,8 @@ const placesApiMapper = (places: PlacesResponse['results']): Place[] => {
                 latitude: place.geocodes.main.latitude,
                 longitude: place.geocodes.main.longitude
             },
-            category: place.categories && place.categories[0].name
+            category: place.categories && place.categories[0].name,
+            address: place.location.formatted_address
         }
     })
     return mappedPlaces;
