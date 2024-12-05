@@ -43,7 +43,9 @@ class SearchPlacesApi extends BaseApi{
                 }
             })
             if(!response.ok){
+                console.log('here30')
                 const errorData = await response.json()
+                console.log('here34')
                 throw new Error(errorData.message || 'Something went wrong')
             }
             responseJson = await response.json();

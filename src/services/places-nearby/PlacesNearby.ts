@@ -9,21 +9,19 @@ class PlacesNearby {
 
     async getPlacesNearby(coordinates: Coordinates): Promise<Place[] | Error>{
         // TODO coordinates validation
-        try{
-            const rawPlaces: RawPlace[] = await searchPlacesApi.getPlacesNearby(coordinates);
-            
-            if(!rawPlaces.length){
-                return []
-            }
-            const processedPlaces = this.processRawPlaces(coordinates, rawPlaces)
-            
-            const sortedPlaces = processedPlaces.sort((a, b)=> {
-               return a.distance - b.distance
-            })
-            return sortedPlaces
-        }catch(e){
-            return e as Error
+        console.log('here1')
+        const rawPlaces: RawPlace[] = await searchPlacesApi.getPlacesNearby(coordinates);
+        
+        if(!rawPlaces.length){
+            return []
         }
+        const processedPlaces = this.processRawPlaces(coordinates, rawPlaces)
+
+        const sortedPlaces = processedPlaces.sort((a, b)=> {
+            return a.distance - b.distance
+        })
+        return sortedPlaces
+        
     }
 
     processRawPlaces(personCoordinates: Coordinates, places: RawPlace[]): Place[]{

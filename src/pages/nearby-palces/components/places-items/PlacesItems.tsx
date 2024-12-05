@@ -7,7 +7,7 @@ import * as styles from './styles.module.css';
 const PlacesItems: React.FC<{places: Place[]}> = ({places}) => {
  
    return  <div className={styles['places-container']}>
-        {places.map(place=>{
+        {places && places.map(place=>{
             return <PlacesItem {...place}/>
         })}
     

@@ -6,20 +6,22 @@ import { Place } from '../../../../types/types';
 
 type Props = {
     setNearbyPlaces: (places: Place[]) => void
+    setIsError: (value: boolean) => void
 }
 
-const PlacesForm: React.FC<Props> = ({setNearbyPlaces}) => {
+const PlacesForm: React.FC<Props> = ({setNearbyPlaces, setIsError}) => {
     const [latitude, setLatitude] = useState(50.396171);
     const [longitude, setLongitude] = useState(30.509681)
 
     const handleFormSubmission = async (event: FormEvent) => {
         event.preventDefault()
 
-        const placesNearbyResponse = await placesNearby.getPlacesNearby({latitude, longitude})
-        
-        setNearbyPlaces(placesNearbyResponse as Place[])
-        
-        console.log(placesNearbyResponse)
+        try{
+            const placesNearbyResponse = await placesNearby.getPlacesNearby({latitude, longitude})
+            setNearbyPlaces(placesNearbyResponse as Place[])
+        }catch(e){
+            setIsError(true) 
+        } 
     }
 
     return <div className={styles['container']}>
