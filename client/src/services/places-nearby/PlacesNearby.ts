@@ -40,7 +40,7 @@ class PlacesNearby {
 
     private getDistance(locationA: Coordinates, locationB: Coordinates): number{
 
-        const EARTH_RADIUS_KM = 6371; 
+        const EARTH_RADIUS_KM = 6371;
         const DEG_TO_RAD = Math.PI / 180;
       
         const deltaLatitude = (locationB.latitude - locationA.latitude) * DEG_TO_RAD; 
