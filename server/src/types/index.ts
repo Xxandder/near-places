@@ -1,1 +1,1 @@
-export { ValuesOf } from '../../../shared/src'
+export { ValuesOf, Coordinates, Place } from '../../../shared/src'
