@@ -1,1 +1,1 @@
-export { HTTPMethod } from './http-method.enum';
+export { HTTPMethod } from '../../../shared/src';
