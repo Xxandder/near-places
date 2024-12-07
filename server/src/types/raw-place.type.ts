@@ -1,4 +1,4 @@
-import { type Place } from "./place.type";
+import { type Place } from "./";
 
 type RawPlace = Omit<Place, 'distance'> & {
     distance?: number;

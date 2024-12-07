@@ -1,4 +1,8 @@
-import { Coordinates, Place, RawPlace } from "../../types/types";
+import { 
+    type Coordinates, 
+    type Place, 
+    type RawPlace } from "../../types";
+
 import { searchPlacesApi } from "../../../../server/src/api/search-places-api/search-places-api";
 
 type RequestError = {
@@ -56,9 +60,6 @@ class PlacesNearby {
         return Math.round(Math.sqrt(deltaX ** 2 + deltaY ** 2));
     }
 
-    
-
-  
 
     // TODO method for processing raw data
 }
