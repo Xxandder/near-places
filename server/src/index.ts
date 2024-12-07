@@ -15,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(nearbyPlacesRouter)
 
+app.use(exceptionHandler)
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
