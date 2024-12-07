@@ -1,4 +1,4 @@
-import { Place, RawPlace } from "../../../types/types";
+import { Place, RawPlace } from "../../../../../client/src/types/types";
 import { PlacesResponse } from "../types/types";
 
 const placesApiMapper = (places: PlacesResponse['results']): RawPlace[] => {

@@ -1,5 +1,5 @@
 import { Coordinates, Place, RawPlace } from "../../types/types";
-import { searchPlacesApi } from "../../utils/search-places-api/search-places-api";
+import { searchPlacesApi } from "../../../../server/src/api/search-places-api/search-places-api";
 
 type RequestError = {
     message: string
