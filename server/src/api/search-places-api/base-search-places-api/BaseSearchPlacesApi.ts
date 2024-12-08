@@ -1,5 +1,5 @@
-import { type Coordinates, type RawPlace } from "../../types";
-import { BaseApi } from "../base-api/BaseApi";
+import { type Coordinates, type RawPlace } from "../../../types";
+import { BaseApi } from "../../base-api/BaseApi";
 
 abstract class BasePlacesApi extends BaseApi{
     protected constructor(

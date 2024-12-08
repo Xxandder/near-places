@@ -1,8 +1,8 @@
-import { HTTPMethod } from "../../../../client/src/enums/enums"
-import { type RawPlace, type Coordinates} from "../../../../client/src/types/types"
+import { HTTPMethod } from "../../../../../client/src/enums/enums"
+import { type RawPlace, type Coordinates} from "../../../../../client/src/types/types"
 import { type PlacesResponse } from "./types/types"
 import { SearchPlacesApiPath } from "./enums/search-places-api-path.enum"
-import { placesApiMapper } from "./mappers/places-api-response.mapper"
+import { placesApiMapper } from "../mappers/places-api-response.mapper"
 import { BasePlacesApi } from "../base-search-places-api/BaseSearchPlacesApi"
 
 class FoursquarePlacesSearchApi<T> extends BasePlacesApi{
