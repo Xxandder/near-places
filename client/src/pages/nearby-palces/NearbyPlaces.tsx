@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
+import { Place } from '../../types';
 import { PlacesForm } from './components/places-form/PlacesForm';
-
-
-import { Place } from '../../types/place.type';
 import { PlacesItems } from './components/places-items/PlacesItems';
 import { PlaceError } from './components/places-error/PlacesError'
 

@@ -1,4 +1,4 @@
-import { HTTPMethod } from "../../../../../client/src/enums/enums"
+import { HTTPMethod } from "../../../../../client/src/enums/index.ts"
 import { type RawPlace, type Coordinates} from "../../../types"
 import { type PlacesResponse } from "./types/types"
 import { SearchPlacesApiPath } from "./enums/search-places-api-path.enum"

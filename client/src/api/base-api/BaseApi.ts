@@ -1,5 +1,5 @@
-import { HTTPMethod } from "../../enums/enums";
-import { ValueOf } from "../../types/types";
+import { HTTPMethod } from "../../enums";
+import { ValuesOf } from "../../types";
 
 type queryParamsType = Record<string, string>
 
@@ -19,7 +19,7 @@ class BaseApi {
         queryParams
     }:{
         path: string,
-        method: ValueOf<typeof HTTPMethod>,
+        method: ValuesOf<typeof HTTPMethod>,
         payload: BodyInit | null,
         headers: Headers,
         queryParams: queryParamsType

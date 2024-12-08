@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Place } from '../../../../types/types';
+import { Place } from '../../../../types';
 
 import * as styles from './styles.module.css';
 

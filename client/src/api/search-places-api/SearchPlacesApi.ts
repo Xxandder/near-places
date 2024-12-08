@@ -1,8 +1,6 @@
-import { Coordinates, Place } from "../../types/types";
+import { Coordinates, Place } from "../../types";
 import { BaseApi } from "../base-api/BaseApi";
 import { SearchPlacesApiPath } from './enums';
-import { API_PATH } from './constants'
-
 
 class SearchPlacesApi extends BaseApi{
     async getNearbyPlaces(coordinates: Coordinates): Promise<Place[]>{

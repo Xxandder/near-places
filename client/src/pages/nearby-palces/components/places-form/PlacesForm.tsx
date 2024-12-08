@@ -1,7 +1,7 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 
 import * as styles from './styles.module.css';
-import { Place } from '../../../../types/types';
+import { Place } from '../../../../types';
 import { searchPlacesApi } from '../../../../api/search-places-api'
 
 type Props = {
