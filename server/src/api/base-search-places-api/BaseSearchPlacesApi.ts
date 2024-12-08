@@ -1,6 +1,7 @@
 import { type Coordinates, type RawPlace } from "../../types";
+import { BaseApi } from "../base-api/BaseApi";
 
-abstract class BasePlacesApi{
+abstract class BasePlacesApi extends BaseApi{
     protected constructor(
         protected maxAmountOfPlaces: number,
         protected minAmountOfPlaces: number,
@@ -9,7 +10,9 @@ abstract class BasePlacesApi{
         protected initialRadius: number,
         protected apiKey: string,
         protected baseUrl: string
-    ) {}
+    ) {
+        super(baseUrl)
+    }
 
     protected abstract makeRequest({
         coordinates,
@@ -21,9 +24,9 @@ abstract class BasePlacesApi{
         limit?: number
     }): Promise<Response>;
 
-    protected abstract parseResponse(response: Response): RawPlace[];
+    protected abstract parseResponse(response: Response): Promise<RawPlace[]>;
 
-    protected abstract getLength(response: Response): number;
+    protected abstract getLength(response: Response): Promise<number>;
 
     public async getPlacesNearby(
         coordinates: Coordinates, 
@@ -41,7 +44,7 @@ abstract class BasePlacesApi{
                 limit,
                 radius: currentRadius
             })
-            const placesLength = this.getLength(response)
+            const placesLength = await this.getLength(response)
 
             if(placesLength < this.minAmountOfPlaces){
                 radius_low_boundary = currentRadius;
@@ -60,7 +63,7 @@ abstract class BasePlacesApi{
             }
         }
 
-        const places: RawPlace[] = this.parseResponse(response)
+        const places: RawPlace[] = await this.parseResponse(response)
         return places
 
     }
