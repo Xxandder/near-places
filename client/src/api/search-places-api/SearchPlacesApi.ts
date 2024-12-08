@@ -6,7 +6,7 @@ class SearchPlacesApi extends BaseApi{
     async getNearbyPlaces(coordinates: Coordinates): Promise<Place[]>{
         try{
 
-            const nearbyPlaces = await this.load({
+            const response = await this.load({
                 path: `${SearchPlacesApiPath.GET_PLACES_BY_COORDINATES}`,
                 method: 'GET',
                 payload: null,
@@ -16,7 +16,11 @@ class SearchPlacesApi extends BaseApi{
                     latitude: `${coordinates.latitude}`
                 }
             })
-            return (await nearbyPlaces.json()) as Place[];
+            const responseJson = await response.json()
+            if(responseJson.errors){
+                throw new Error(responseJson.errors[0].message)
+            }
+            return responseJson as Place[];
         }catch(e){
             throw new Error('Something went wrong')
         }
