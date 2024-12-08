@@ -53,13 +53,11 @@ class FoursquarePlacesSearchApi extends BasePlacesApi{
         return response 
     }
 
-    async getLength(response: Response): Promise<number>{
-        const responseJson = await response.json()
+    async getLength(responseJson: any): Promise<number>{
         return responseJson.results.length
     }
 
-    async parseResponse(response: Response): Promise<RawPlace[]> {
-        const responseJson = await response.json()
+    async parseResponse(responseJson: any): Promise<RawPlace[]> {
         const results: PlacesResponse['results'] = (responseJson as PlacesResponse).results
         const places = placesApiMapper(results.slice(0, this.maxAmountOfPlaces))
 

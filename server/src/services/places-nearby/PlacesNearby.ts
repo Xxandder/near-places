@@ -13,7 +13,6 @@ class PlacesNearby {
 
     async getPlacesNearby(coordinates: Coordinates): Promise<Place[]>{
         // TODO coordinates validation
-
         const rawPlaces: RawPlace[] = await searchPlacesApi.getPlacesNearby(coordinates);
         
         if(!rawPlaces.length){
