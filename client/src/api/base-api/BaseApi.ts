@@ -25,11 +25,10 @@ class BaseApi {
         queryParams: queryParamsType
     }){
         const fullUrl = this.getFullEndpoint(path, queryParams)
-
         const response = await fetch(fullUrl, {
             method,
             body: payload,
-            headers: headers
+            headers
         })
         return response
     }

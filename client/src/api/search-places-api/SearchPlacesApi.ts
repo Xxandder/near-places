@@ -7,8 +7,9 @@ import { API_PATH } from './constants'
 class SearchPlacesApi extends BaseApi{
     async getNearbyPlaces(coordinates: Coordinates): Promise<Place[]>{
         try{
+
             const nearbyPlaces = await this.load({
-                path: `${this.baseUrl}${SearchPlacesApiPath.GET_PLACES_BY_COORDINATES}`,
+                path: `${SearchPlacesApiPath.GET_PLACES_BY_COORDINATES}`,
                 method: 'GET',
                 payload: null,
                 headers: new Headers(),
