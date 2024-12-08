@@ -1,0 +1,1 @@
+export { getNearbyPlacesSchema } from './get-nearby-places/get-nearby-places'
