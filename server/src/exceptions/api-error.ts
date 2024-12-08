@@ -11,7 +11,7 @@ class ApiError extends Error{
 
         this.errorCode = errorCode
 
-        Object.setPrototypeOf(this, Error.prototype)
+        Object.setPrototypeOf(this, ApiError.prototype)
     }
     serializeErrors() {
         return [{message: this.message }]

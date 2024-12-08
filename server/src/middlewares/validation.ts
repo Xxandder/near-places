@@ -16,8 +16,11 @@ const validationMiddleware = (schema: z.Schema, validationSource: ValidationSour
             }
             next(); 
         } catch (error) {
+          
             if (error instanceof ZodError) {
-               next(new ApiError(error.message, HTTPStatusCode.BadRequest))
+                const apiError = new ApiError(JSON.parse(error.message)[0].message, HTTPStatusCode.BadRequest)
+
+                next(apiError)
             }
         }
     };

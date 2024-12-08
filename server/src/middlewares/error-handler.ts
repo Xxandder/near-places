@@ -8,7 +8,6 @@ const exceptionHandler = (
   res: Response,
   _next: NextFunction
 ) => {
-    console.log(error)
   if(error instanceof ApiError){
     return res
       .status(error.errorCode)
