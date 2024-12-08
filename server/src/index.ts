@@ -1,9 +1,14 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 
+import dotenv from 'dotenv'; 
+dotenv.config();
+
 import { router as nearbyPlacesRouter } from './routes/nearby-places';
 
 import { exceptionHandler } from './middlewares/error-handler'
+
+
 
 const app: Application = express();
 
