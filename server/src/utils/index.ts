@@ -1,0 +1,1 @@
+export { generateSearchPlacesCashKey } from './generate-search-places-cash-key'
