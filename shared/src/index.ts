@@ -1,7 +1,9 @@
+export { BaseApi } from './api/base-api/BaseApi'
+
 export { 
     type ValuesOf,
     type Coordinates,
-    type Place
- } from './types'
+    type Place,
+ } from './types';
 
-export { HTTPMethod } from './enums'
+export { HTTPMethod } from './enums';

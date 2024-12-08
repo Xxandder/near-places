@@ -1,5 +1,5 @@
 import { Coordinates, Place } from "../../types";
-import { BaseApi } from "../base-api/BaseApi";
+import { BaseApi } from "../base-api";
 import { SearchPlacesApiPath } from './enums';
 
 class SearchPlacesApi extends BaseApi{

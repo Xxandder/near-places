@@ -1,5 +1,5 @@
 import { HTTPMethod } from "../../enums";
-import { ValuesOf } from "../../types";
+import { type ValuesOf } from "../../types";
 
 type queryParamsType = Record<string, string>
 
