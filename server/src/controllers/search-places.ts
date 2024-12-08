@@ -19,9 +19,7 @@ const getNearbyPlaces = async (req: Request, res: Response, next: NextFunction) 
          
         }catch(e){
             console.log(e)
-            res.status(500).send({
-                message: 'Error'
-            })
+            next(e)
         }
     
 }
