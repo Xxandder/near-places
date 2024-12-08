@@ -1,7 +1,6 @@
 
 import { Request, Response, NextFunction } from 'express';
 import { z, ZodError } from 'zod'
-import { getNearbyPlacesSchema } from '../validation-schema';
 import { ApiError } from '../exceptions';
 import { HTTPStatusCode } from '../enums';
 import { ValidationSource } from './types';

@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 
 import * as styles from './styles.module.css';
 import { Place } from '../../../../types';

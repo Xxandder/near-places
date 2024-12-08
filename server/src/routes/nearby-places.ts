@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response, Router } from 'express'
+import { Router } from 'express'
 
 import { getNearbyPlaces } from '../controllers/search-places';
 import { validationMiddleware } from '../middlewares';
