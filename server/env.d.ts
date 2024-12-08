@@ -1,7 +1,7 @@
 declare namespace NodeJS {
     interface ProcessEnv {
         CURRENT_API: 'foursquare' | 'google';
-        BASE_URL: string;
+        SEARCH_PLACES_API_BASE_URL: string;
         API_KEY: string;
         MAX_AMOUNT_OF_PLACES: number;
         MIN_AMOUNT_OF_PLACES: number;
