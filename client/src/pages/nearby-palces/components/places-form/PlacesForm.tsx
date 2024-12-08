@@ -1,15 +1,10 @@
 import React, { FormEvent, useState } from 'react';
 
 import * as styles from './styles.module.css';
-import { Place } from '../../../../types';
 import { searchPlacesApi } from '../../../../api/search-places-api'
+import { nearbyPlacesObservable, isErrorObservable, isLoadingObservable } from '../../../../services';
 
-type Props = {
-    setNearbyPlaces: (places: Place[]) => void
-    setIsError: (value: boolean) => void
-}
-
-const PlacesForm: React.FC<Props> = ({setNearbyPlaces, setIsError}) => {
+const PlacesForm: React.FC = () => {
     const [latitude, setLatitude] = useState(50.449720);
     const [longitude, setLongitude] = useState(30.525077)
 
@@ -17,12 +12,17 @@ const PlacesForm: React.FC<Props> = ({setNearbyPlaces, setIsError}) => {
         event.preventDefault()
 
         try{
-            const placesNearbyResponse = await searchPlacesApi.getNearbyPlaces({latitude, longitude})
-            setNearbyPlaces(placesNearbyResponse as Place[])
-            setIsError(false)
+            isLoadingObservable.notify(true)
+            nearbyPlacesObservable.notify([])
+            const placesNearby = await searchPlacesApi.getNearbyPlaces({latitude, longitude})
+            nearbyPlacesObservable.notify(placesNearby)
+            isErrorObservable.notify(false)
         }catch(e){
-            setIsError(true)
+            isErrorObservable.notify(true)
         } 
+        finally{
+            isLoadingObservable.notify(false)
+        }
     }
 
     return <div className={styles['container']}>
@@ -39,6 +39,8 @@ const PlacesForm: React.FC<Props> = ({setNearbyPlaces, setIsError}) => {
                     step="any"
                     lang="en"
                     onChange={(e)=>setLatitude(parseFloat(e.target.value))}
+                    max="90"
+                    min="-90"
                 />
             </div>
             <div className={styles['field']}>
@@ -51,7 +53,9 @@ const PlacesForm: React.FC<Props> = ({setNearbyPlaces, setIsError}) => {
                     className={styles['input']}
                     step="any"
                     lang="en"
-                    onChange={(e)=>setLongitude(parseFloat(e.target.value))}/>
+                    onChange={(e)=>setLongitude(parseFloat(e.target.value))}
+                    max="180"
+                    min="-180"/>
             </div>
             <button type="submit" className={styles['send-button']}>
                 Places nearby
