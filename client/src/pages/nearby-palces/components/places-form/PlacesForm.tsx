@@ -1,15 +1,10 @@
 import React, { FormEvent, useState } from 'react';
 
 import * as styles from './styles.module.css';
-import { Place } from '../../../../types';
 import { searchPlacesApi } from '../../../../api/search-places-api'
 import { nearbyPlacesObservable, isErrorObservable } from '../../../../services';
 
-type Props = {
-    setIsError: (value: boolean) => void
-}
-
-const PlacesForm: React.FC<Props> = ({setIsError}) => {
+const PlacesForm: React.FC = () => {
     const [latitude, setLatitude] = useState(50.449720);
     const [longitude, setLongitude] = useState(30.525077)
 

@@ -13,7 +13,7 @@ const NearbyPlaces: React.FC = () => {
    nearbyPlacesObservable.subscribe(setNearbyPlaces)
    isErrorObservable.subscribe(setIsError)
    return  <div>
-      <PlacesForm setIsError={setIsError}/>
+      <PlacesForm/>
       {isError || !nearbyPlaces.length ? 
          <PlaceError message={isError ?
              "Something went wrong" :
