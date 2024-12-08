@@ -5,7 +5,7 @@ import { SearchPlacesApiPath } from "./enums/search-places-api-path.enum"
 import { placesApiMapper } from "../mappers/places-api-response.mapper"
 import { BasePlacesApi } from "../base-search-places-api/BaseSearchPlacesApi"
 
-class FoursquarePlacesSearchApi<T> extends BasePlacesApi{
+class FoursquarePlacesSearchApi extends BasePlacesApi{
 
     public constructor(
         maxAmountOfPlaces: number,
