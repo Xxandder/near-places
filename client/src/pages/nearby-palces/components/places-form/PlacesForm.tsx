@@ -1,8 +1,8 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { placesNearby } from '../../../../services/places-nearby/palces-nearby';
 
 import * as styles from './styles.module.css';
 import { Place } from '../../../../types/types';
+import { searchPlacesApi } from '../../../../api/search-places-api'
 
 type Props = {
     setNearbyPlaces: (places: Place[]) => void
@@ -17,7 +17,7 @@ const PlacesForm: React.FC<Props> = ({setNearbyPlaces, setIsError}) => {
         event.preventDefault()
 
         try{
-            const placesNearbyResponse = await placesNearby.getPlacesNearby({latitude, longitude})
+            const placesNearbyResponse = await searchPlacesApi.getNearbyPlaces({latitude, longitude})
             setNearbyPlaces(placesNearbyResponse as Place[])
             setIsError(false)
         }catch(e){
