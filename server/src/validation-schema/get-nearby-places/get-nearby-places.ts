@@ -1,17 +1,25 @@
 
-import { z } from 'zod';
+import { number, z } from 'zod';
 
 import { ValidationSchemaErrorMessage } from '../enums';
 
 const getNearbyPlacesSchema = z.object({
   latitude: 
-    z.number()
-    .min(-90, { message: ValidationSchemaErrorMessage.INCORRECT_LATITUDE })
-    .max(90, { message: ValidationSchemaErrorMessage.INCORRECT_LATITUDE }),
+    z.string()
+    .refine((coordinate) => {
+      const numberCoordinate = Number(coordinate)
+      return numberCoordinate <= 90 && numberCoordinate >= -90
+    }, {
+      message: ValidationSchemaErrorMessage.INCORRECT_LONGITUDE 
+    }),
   longitude: z
-    .number()
-    .min(-180, { message: ValidationSchemaErrorMessage.INCORRECT_LONGITUDE })
-    .max(180, { message: ValidationSchemaErrorMessage.INCORRECT_LONGITUDE })
+    .string()
+    .refine((coordinate) => {
+      const numberCoordinate = Number(coordinate)
+      return numberCoordinate <= 180 && numberCoordinate >= -180
+    }, {
+      message: ValidationSchemaErrorMessage.INCORRECT_LONGITUDE 
+    }),
 });
 
 export { getNearbyPlacesSchema };
