@@ -1,11 +1,12 @@
 import { HTTPStatusCode } from "../enums"
 import { ValuesOf } from '../types'
 
+type ErrorCode = ValuesOf<typeof HTTPStatusCode>
 
 class ApiError extends Error{
-    errorCode: ValuesOf<typeof HTTPStatusCode>
+    errorCode: ErrorCode
 
-    constructor(message: string, errorCode=HTTPStatusCode.InternalServerError){
+    constructor(message: string, errorCode: ErrorCode = HTTPStatusCode.InternalServerError){
         super(message)
 
         this.errorCode = errorCode
