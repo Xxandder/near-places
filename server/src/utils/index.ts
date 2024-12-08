@@ -1,1 +1,1 @@
-export { generateSearchPlacesCacheKey } from './generate-search-places-cash-key'
+export { generateSearchPlacesCacheKey } from './generate-search-places-cache-key'
