@@ -1,6 +1,5 @@
 import { BasePlacesApi } from "./base-search-places-api/BaseSearchPlacesApi";
 import { FoursquarePlacesSearchApi } from "./foursquare-search-places-api/FoursquarePlacesSearchApi";
-import { BASE_URL } from "./constants/constants"
 
 const currentApi = process.env['CURRENT_API']
 const maxAmountOfPlaces = process.env['MAX_AMOUNT_OF_PLACES']
