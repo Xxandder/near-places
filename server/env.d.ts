@@ -7,5 +7,6 @@ declare namespace NodeJS {
         MIN_AMOUNT_OF_PLACES: number;
         MAX_BATCH_SIZE: number;
         MAX_RADIUS: number;
+        INITIAL_RADIUS: number;
     }
 }
