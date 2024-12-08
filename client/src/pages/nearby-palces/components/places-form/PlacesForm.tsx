@@ -3,13 +3,13 @@ import React, { FormEvent, useState } from 'react';
 import * as styles from './styles.module.css';
 import { Place } from '../../../../types';
 import { searchPlacesApi } from '../../../../api/search-places-api'
+import { nearbyPlacesObservable } from '../../../../services';
 
 type Props = {
-    setNearbyPlaces: (places: Place[]) => void
     setIsError: (value: boolean) => void
 }
 
-const PlacesForm: React.FC<Props> = ({setNearbyPlaces, setIsError}) => {
+const PlacesForm: React.FC<Props> = ({setIsError}) => {
     const [latitude, setLatitude] = useState(50.449720);
     const [longitude, setLongitude] = useState(30.525077)
 
@@ -17,8 +17,8 @@ const PlacesForm: React.FC<Props> = ({setNearbyPlaces, setIsError}) => {
         event.preventDefault()
 
         try{
-            const placesNearbyResponse = await searchPlacesApi.getNearbyPlaces({latitude, longitude})
-            setNearbyPlaces(placesNearbyResponse as Place[])
+            const placesNearby = await searchPlacesApi.getNearbyPlaces({latitude, longitude})
+            nearbyPlacesObservable.notify(placesNearby)
             setIsError(false)
         }catch(e){
             setIsError(true)
