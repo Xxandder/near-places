@@ -1,5 +1,5 @@
 import { Place } from "../types";
-import { Observable } from "./observer";
+import { Observable } from "./Observable";
 
 const nearPlacesObservable = new Observable<Place[]>()
 
