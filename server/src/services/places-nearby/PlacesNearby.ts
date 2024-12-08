@@ -3,7 +3,7 @@ import {
     type Place, 
     type RawPlace } from "../../types";
 
-import { searchPlacesApi } from "../../api/search-places-api/search-places-api";
+import { searchPlacesApi } from "../../api/search-places-api";
 
 class PlacesNearby {
 

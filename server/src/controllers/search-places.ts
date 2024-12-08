@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import { placesNearby } from '../services/places-nearby/palces-nearby'
+import { placesNearby } from '../services/places-nearby'
 import { Place } from "../types";
 
 

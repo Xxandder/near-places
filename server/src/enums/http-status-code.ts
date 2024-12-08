@@ -11,7 +11,7 @@ const HTTPStatusCode = {
     InternalServerError: 500,
     BadGateway: 502,
     ServiceUnavailable: 503,
-    GatewayTiemout: 504
+    GatewayTimeout: 504
   } as const;
 
   export { HTTPStatusCode };

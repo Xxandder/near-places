@@ -4,9 +4,9 @@ import cors from 'cors';
 import dotenv from 'dotenv'; 
 dotenv.config();
 
-import { router as nearbyPlacesRouter } from './routes/nearby-places';
+import { searchPlacesRouter } from './routes';
 
-import { exceptionHandler } from './middlewares/error-handler'
+import { exceptionHandler } from './middlewares'
 
 
 
@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(nearbyPlacesRouter)
+app.use(searchPlacesRouter)
 
 app.use(exceptionHandler)
 
