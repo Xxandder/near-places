@@ -8,5 +8,6 @@ declare namespace NodeJS {
         MAX_BATCH_SIZE: number;
         MAX_RADIUS: number;
         INITIAL_RADIUS: number;
+        COORDINATES_PRECISION: number;
     }
 }

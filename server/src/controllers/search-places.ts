@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import { placesNearby } from '../services/places-nearby'
 import { Place } from "../types";
 
+import { redis } from "../redis";
 
 const getNearbyPlaces = async (req: Request, res: Response, next: NextFunction) => {
         const {longitude, latitude} = req.query
@@ -15,6 +16,7 @@ const getNearbyPlaces = async (req: Request, res: Response, next: NextFunction) 
                 })
                
             }
+            await redis.set(res.locals.cacheKey, JSON.stringify(places), 'EX', 3600); 
             res.status(200).json(places)
          
         }catch(e){
