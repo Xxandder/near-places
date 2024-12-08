@@ -2,7 +2,7 @@ import React, { FormEvent, useState } from 'react';
 
 import * as styles from './styles.module.css';
 import { searchPlacesApi } from '../../../../api/search-places-api'
-import { nearbyPlacesObservable, isErrorObservable } from '../../../../services';
+import { nearbyPlacesObservable, isErrorObservable, isLoadingObservable } from '../../../../services';
 
 const PlacesForm: React.FC = () => {
     const [latitude, setLatitude] = useState(50.449720);
@@ -12,12 +12,17 @@ const PlacesForm: React.FC = () => {
         event.preventDefault()
 
         try{
+            isLoadingObservable.notify(true)
+            nearbyPlacesObservable.notify([])
             const placesNearby = await searchPlacesApi.getNearbyPlaces({latitude, longitude})
             nearbyPlacesObservable.notify(placesNearby)
             isErrorObservable.notify(false)
         }catch(e){
             isErrorObservable.notify(true)
         } 
+        finally{
+            isLoadingObservable.notify(false)
+        }
     }
 
     return <div className={styles['container']}>
