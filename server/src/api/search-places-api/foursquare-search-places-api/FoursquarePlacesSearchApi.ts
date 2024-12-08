@@ -1,6 +1,6 @@
-import { HTTPMethod } from "../../../../../client/src/enums/index.ts"
+import { HTTPMethod } from "../../../enums"
 import { type RawPlace, type Coordinates} from "../../../types"
-import { type PlacesResponse } from "./types/types"
+import { type PlacesResponse } from "./types"
 import { SearchPlacesApiPath } from "./enums/search-places-api-path.enum"
 import { placesApiMapper } from "../mappers/places-api-response.mapper"
 import { BasePlacesApi } from "../base-search-places-api/BaseSearchPlacesApi"

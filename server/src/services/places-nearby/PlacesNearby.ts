@@ -3,11 +3,7 @@ import {
     type Place, 
     type RawPlace } from "../../types";
 
-import { searchPlacesApi } from "../../../../server/src/api/search-places-api/search-places-api";
-
-type RequestError = {
-    message: string
-}
+import { searchPlacesApi } from "../../api/search-places-api/search-places-api";
 
 class PlacesNearby {
 
