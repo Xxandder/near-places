@@ -11,8 +11,8 @@ const getNearbyPlaces = async (req: Request, res: Response, next: NextFunction) 
             let places: Place[] = [];
             if(longitude && latitude){
                 places = await placesNearby.getPlacesNearby({
-                    latitude: parseInt(latitude as string), 
-                    longitude: parseInt(longitude as string)
+                    latitude: Number(latitude as string), 
+                    longitude: Number(longitude as string)
                 })
                
             }
