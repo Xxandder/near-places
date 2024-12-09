@@ -1,0 +1,9 @@
+.place-error{
+    display: flex;
+    justify-content: center;
+}
+
+.place-error__text{
+    text-align: center;
+    font-size: 40px;
+}

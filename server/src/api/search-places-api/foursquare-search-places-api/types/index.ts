@@ -1,0 +1,1 @@
+export { type PlacesResponse } from './places-response.type'
