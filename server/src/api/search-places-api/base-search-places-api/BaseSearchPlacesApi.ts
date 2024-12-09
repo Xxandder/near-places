@@ -39,7 +39,6 @@ abstract class BasePlacesApi extends BaseApi{
         let response: Response;
         let responseJson;
         while(true){
-           
             response = await this.makeRequest({
                 coordinates,
                 limit,
