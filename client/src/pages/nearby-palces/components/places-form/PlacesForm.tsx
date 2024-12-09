@@ -5,8 +5,8 @@ import { searchPlacesApi } from '../../../../api/search-places-api'
 import { nearbyPlacesObservable, isErrorObservable, isLoadingObservable } from '../../../../services';
 
 const PlacesForm: React.FC = () => {
-    const [latitude, setLatitude] = useState(50.449720);
-    const [longitude, setLongitude] = useState(30.525077)
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0)
 
     const handleFormSubmission = async (event: FormEvent) => {
         event.preventDefault()
