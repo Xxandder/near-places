@@ -34,12 +34,13 @@ abstract class BasePlacesApi extends BaseApi{
     ): Promise<RawPlace[]> {
        
         let currentRadius = this.initialRadius;
-        let radius_low_boundary = 0;
-        let radius_upper_boundary = this.maxRadius;
+        let radiusLowerBoundary = 0;
         let response: Response;
         let responseJson;
         while(true){
-           
+            if(currentRadius > this.maxRadius){
+                break;
+            }
             response = await this.makeRequest({
                 coordinates,
                 limit,
@@ -47,19 +48,16 @@ abstract class BasePlacesApi extends BaseApi{
             })
             responseJson = await response.json()
             const placesLength = await this.getLength(responseJson)
-            if(currentRadius >= this.maxRadius){
-                break;
-            }
             if(placesLength < this.minAmountOfPlaces){
-                radius_low_boundary = currentRadius;
-                currentRadius += Math.round((radius_upper_boundary - currentRadius) / 2);
-               
+              
+                radiusLowerBoundary = currentRadius
+                const multiplier = 2 - (placesLength ? (this.minAmountOfPlaces - placesLength) / this.minAmountOfPlaces : 1)
+                currentRadius *= Math.round(2 * multiplier)
+                
                 continue;
             }
             else if(placesLength >= this.maxBatchSize){
-                radius_upper_boundary = currentRadius;
-                currentRadius -= Math.round((currentRadius - radius_low_boundary)  / 2);
-               
+                currentRadius -= Math.round((currentRadius - radiusLowerBoundary) / 2);
                 continue;
             }
             else{
