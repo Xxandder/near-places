@@ -37,6 +37,7 @@ abstract class BasePlacesApi extends BaseApi{
         let radiusLowerBoundary = 0;
         let response: Response;
         let responseJson;
+        let lastFoundPlacesNumber = 0;
         while(true){
             if(currentRadius > this.maxRadius){
                 break;
@@ -49,11 +50,13 @@ abstract class BasePlacesApi extends BaseApi{
             responseJson = await response.json()
             const placesLength = await this.getLength(responseJson)
             if(placesLength < this.minAmountOfPlaces){
-              
-                radiusLowerBoundary = currentRadius
-                const multiplier = 2 - (placesLength ? (this.minAmountOfPlaces - placesLength) / this.minAmountOfPlaces : 1)
-                currentRadius *= Math.round(2 * multiplier)
                 
+                radiusLowerBoundary = currentRadius
+                const multiplier = placesLength - lastFoundPlacesNumber ? 2 -
+                 (this.minAmountOfPlaces - placesLength - lastFoundPlacesNumber) /
+                  (this.minAmountOfPlaces - lastFoundPlacesNumber) : 2
+                currentRadius *= Math.round(multiplier)
+                lastFoundPlacesNumber = placesLength - lastFoundPlacesNumber;
                 continue;
             }
             else if(placesLength >= this.maxBatchSize){
