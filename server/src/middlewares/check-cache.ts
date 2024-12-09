@@ -9,7 +9,7 @@ const checkCache = async (req: Request, res: Response, next: NextFunction) => {
         latitude: Number(latitude), 
         longitude: Number(longitude)
     })
-  
+   
     const cachedData = await redis.get(cacheKey);
    
     if (cachedData) {

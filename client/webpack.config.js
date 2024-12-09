@@ -4,10 +4,21 @@ const webpack = require('webpack');
 require('dotenv').config({ path: './.env' }); 
 
 module.exports = {
+  mode: 'production',
   entry: './src/index.tsx',
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
+  performance: {
+    hints: false, 
+    maxAssetSize: 300000, 
+    maxEntrypointSize: 300000,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.css']

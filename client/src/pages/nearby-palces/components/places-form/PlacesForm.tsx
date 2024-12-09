@@ -41,6 +41,7 @@ const PlacesForm: React.FC = () => {
                     onChange={(e)=>setLatitude(parseFloat(e.target.value))}
                     max="90"
                     min="-90"
+                    required
                 />
             </div>
             <div className={styles['field']}>
@@ -55,7 +56,8 @@ const PlacesForm: React.FC = () => {
                     lang="en"
                     onChange={(e)=>setLongitude(parseFloat(e.target.value))}
                     max="180"
-                    min="-180"/>
+                    min="-180"
+                    required/>
             </div>
             <button type="submit" className={styles['send-button']}>
                 Places nearby
