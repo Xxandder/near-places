@@ -1,9 +1,12 @@
 import { Place } from "../types";
 import { Observable } from "./Observable";
 
-const nearbyPlacesObservable = new Observable<Place[]>();
-const isErrorObservable = new Observable<boolean>();
-const isLoadingObservable = new Observable<boolean>();
+type NearbyPlacesState = {
+    data: Place[];
+    error: string | null
+    isLoading: boolean
+}
 
+const nearbyPlacesObservable = new Observable<NearbyPlacesState>();
 
-export { nearbyPlacesObservable, isErrorObservable, isLoadingObservable };
+export { nearbyPlacesObservable };

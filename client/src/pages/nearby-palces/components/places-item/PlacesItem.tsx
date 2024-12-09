@@ -18,8 +18,8 @@ const PlacesItem: React.FC<Place> = ({
             <p className={styles['place-coordinate']}>Latitude: {coordinates.latitude}</p>
             <p className={styles['place-coordinate']}>Longitude: {coordinates.longitude}</p>
         </div>
-        {category && <p>{category}</p>}
-        {address && <p>{address}</p>}
+        {category && <p>Category: {category}</p>}
+        {address && <p>Address:{address}</p>}
    </div>
   
   };
