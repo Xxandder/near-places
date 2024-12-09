@@ -4,19 +4,22 @@ import { Place } from '../../types';
 import { PlacesForm } from './components/places-form/PlacesForm';
 import { PlacesItems } from './components/places-items/PlacesItems';
 import { PlaceError } from './components/places-error/PlacesError';
-import { nearbyPlacesObservable, isErrorObservable, isLoadingObservable } from '../../services';
+import { nearbyPlacesObservable } from '../../services';
 import { Loader } from '../../components/loader/Loader' 
 
 import * as styles from './styles.module.css'
 
 const NearbyPlaces: React.FC = () => {
    const [nearbyPlaces, setNearbyPlaces] = useState<Place[]>([])
-   const [isError, setIsError] = useState<boolean>(false)
+   const [error, setError] = useState<string | null>(null)
    const [isLoading, setIsLoading] = useState<boolean>(false)
 
-   nearbyPlacesObservable.subscribe(setNearbyPlaces)
-   isErrorObservable.subscribe(setIsError)
-   isLoadingObservable.subscribe(setIsLoading)
+   
+   nearbyPlacesObservable.subscribe((state)=>{
+      setNearbyPlaces(state.data)
+      setError(state.error)
+      setIsLoading(state.isLoading)
+   })
 
    return  <div>
     
@@ -24,9 +27,9 @@ const NearbyPlaces: React.FC = () => {
       <PlacesForm/>
       <div className={styles['nearby-places__data']}>
          {isLoading ? <Loader/> : 
-         isError || !nearbyPlaces.length ? 
-         <PlaceError message={isError ?
-               "Something went wrong" :
+         error || !nearbyPlaces.length ? 
+         <PlaceError message={error ?
+               `${error}` :
                "No results found"}/> :
          <PlacesItems places={nearbyPlaces}/>}
       </div>
