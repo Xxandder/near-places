@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import { Place } from '../../types';
+import { Place } from '@/types';
 import { PlacesForm } from './components/places-form/PlacesForm';
 import { PlacesItems } from './components/places-items/PlacesItems';
 import { PlaceError } from './components/places-error/PlacesError';
-import { nearbyPlacesObservable } from '../../services';
-import { Loader } from '../../components/loader/Loader' 
+import { nearbyPlacesObservable } from '@/services';
+import { Loader } from '@/components/loader/Loader' 
 
 import * as styles from './styles.module.css'
 
