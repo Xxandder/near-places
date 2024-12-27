@@ -50,7 +50,6 @@ abstract class BasePlacesApi extends BaseApi{
             responseJson = await response.json()
             const placesLength = await this.getLength(responseJson)
             if(placesLength < this.minAmountOfPlaces){
-                
                 radiusLowerBoundary = currentRadius
                 const multiplier = placesLength - lastFoundPlacesNumber ? 2 -
                  (this.minAmountOfPlaces - placesLength - lastFoundPlacesNumber) /
