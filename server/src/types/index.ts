@@ -4,4 +4,4 @@ export {
     type Place 
 } from '../../../shared/src'
 
-export { RawPlace } from './raw-place.type'
+export { RawPlace } from './raw-place'
