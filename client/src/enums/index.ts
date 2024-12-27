@@ -1,1 +1,1 @@
-export { HTTPMethod } from '../../../shared/src';
+export { HTTPMethod } from '@shared/src';
