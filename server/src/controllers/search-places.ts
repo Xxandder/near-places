@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import { placesNearby } from '@/services/places-nearby'
+import { nearbyPlacesService } from '@/services/places-nearby'
 import { Place } from "@/types";
 
 import { redis } from "@/redis";
@@ -10,7 +10,7 @@ const getNearbyPlaces = async (req: Request, res: Response, next: NextFunction) 
         try{
             let places: Place[] = [];
             if(longitude && latitude){
-                places = await placesNearby.getPlacesNearby({
+                places = await nearbyPlacesService.getPlacesNearby({
                     latitude: Number(latitude as string), 
                     longitude: Number(longitude as string)
                 })
