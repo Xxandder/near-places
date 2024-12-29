@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 
-import { placesNearby } from '../services/places-nearby'
-import { Place } from "../types";
+import { placesNearby } from '@/services/places-nearby'
+import { Place } from "@/types";
 
-import { redis } from "../redis";
+import { redis } from "@/redis";
 
 const getNearbyPlaces = async (req: Request, res: Response, next: NextFunction) => {
         const {longitude, latitude} = req.query

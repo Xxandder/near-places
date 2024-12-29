@@ -1,4 +1,4 @@
-import { type Coordinates, type RawPlace } from "../../../types";
+import { type Coordinates, type RawPlace } from "@/types";
 import { BaseApi } from "../../base-api";
 
 abstract class BasePlacesApi extends BaseApi{

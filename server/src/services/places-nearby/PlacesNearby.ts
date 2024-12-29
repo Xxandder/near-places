@@ -1,9 +1,9 @@
 import { 
     type Coordinates, 
     type Place, 
-    type RawPlace } from "../../types";
+    type RawPlace } from "@/types";
 
-import { searchPlacesApi } from "../../api/search-places-api";
+import { searchPlacesApi } from "@/api/search-places-api";
 
 class PlacesNearby {
 

@@ -1,4 +1,4 @@
-import { Coordinates } from "../types";
+import { Coordinates } from "@/types";
 
 const coordinatesPrecision = Number(process.env['COORDINATES_PRECISION'])
 

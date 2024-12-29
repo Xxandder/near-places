@@ -1,5 +1,5 @@
-import { HTTPMethod } from "../../../enums"
-import { type RawPlace, type Coordinates} from "../../../types"
+import { HTTPMethod } from "@/enums"
+import { type RawPlace, type Coordinates} from "@/types"
 import { type PlacesResponse } from "./types"
 import { SearchPlacesApiPath } from "./enums"
 import { placesApiMapper } from "../mappers"

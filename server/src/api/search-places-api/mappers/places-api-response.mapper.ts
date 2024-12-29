@@ -1,4 +1,4 @@
-import { type RawPlace } from "../../../types";
+import { type RawPlace } from "@/types";
 import { PlacesResponse } from "../foursquare-search-places-api/types";
 
 const placesApiMapper = (places: PlacesResponse['results']): RawPlace[] => {
