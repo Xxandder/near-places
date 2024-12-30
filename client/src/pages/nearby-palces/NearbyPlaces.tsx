@@ -7,7 +7,7 @@ import { PlaceError } from './components/places-error/PlacesError';
 import { 
    nearbyPlacesObservable, 
    type NearbyPlacesState 
-} from '@/services/obserable';
+} from '@/services/observable';
 import { Loader } from '@/components/loader/Loader' 
 
 import * as styles from './styles.module.css'
