@@ -6,7 +6,7 @@ import { HTTPStatusCode } from '../enums';
 import { ValidationSource } from './types';
 
 const validationMiddleware = (schema: z.Schema, validationSource: ValidationSource) => {
-    return (req: Request, res: Response, next: NextFunction) => {
+    return (req: Request, _res: Response, next: NextFunction) => {
         try {
             if (validationSource === 'body') {
                 schema.parse(req.body);
