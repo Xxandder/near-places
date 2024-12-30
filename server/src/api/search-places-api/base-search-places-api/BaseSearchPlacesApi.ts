@@ -1,17 +1,25 @@
 import { type Coordinates, type RawPlace } from "@/types";
+import { BasePlacesApiConstructorParams } from '../types'
 import { BaseApi } from "../../base-api";
 
 abstract class BasePlacesApi extends BaseApi{
-    protected constructor(
-        protected maxAmountOfPlaces: number,
-        protected minAmountOfPlaces: number,
-        protected maxBatchSize: number,
-        protected maxRadius: number,
-        protected initialRadius: number,
-        protected apiKey: string,
-        protected baseUrl: string
-    ) {
-        super(baseUrl)
+    protected maxAmountOfPlaces: number;
+    protected minAmountOfPlaces: number;
+    protected maxBatchSize: number;
+    protected maxRadius: number;
+    protected initialRadius: number;
+    protected apiKey: string;
+    protected baseUrl: string;
+
+    protected constructor(params: BasePlacesApiConstructorParams) {
+        super(params.baseUrl)
+        this.maxAmountOfPlaces = params.maxAmountOfPlaces
+        this.minAmountOfPlaces = params.minAmountOfPlaces
+        this.maxBatchSize = params.maxBatchSize
+        this.maxRadius = params.maxRadius
+        this.initialRadius = params.initialRadius
+        this.apiKey = params.apiKey
+        this.baseUrl = params.baseUrl
     }
 
     protected abstract makeRequest({

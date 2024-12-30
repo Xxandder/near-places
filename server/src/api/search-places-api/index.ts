@@ -18,13 +18,15 @@ function createPlacesApi(): BasePlacesApi {
     switch (currentApi) {
         case ApiName.FOURSQUARE:
             return new FoursquarePlacesSearchApi(
-                maxAmountOfPlaces,
-                minAmountOfPlaces,
-                maxBatchSize,
-                maxRadius,
-                initialRadius,
-                apiKey,
-                baseUrl
+                {
+                    maxAmountOfPlaces,
+                    minAmountOfPlaces,
+                    maxBatchSize,
+                    maxRadius,
+                    initialRadius,
+                    apiKey,
+                    baseUrl
+                }
             );
         default:
             throw new Error(`Unknown api: ${currentApi}`);
