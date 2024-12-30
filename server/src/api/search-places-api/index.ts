@@ -1,5 +1,6 @@
 import { BasePlacesApi } from "./base-search-places-api/BaseSearchPlacesApi";
 import { FoursquarePlacesSearchApi } from "./foursquare-search-places-api/FoursquarePlacesSearchApi";
+import { ApiName } from "./enums";
 
 const currentApi = process.env['CURRENT_API']
 const maxAmountOfPlaces = Number(process.env['MAX_AMOUNT_OF_PLACES'])
@@ -13,7 +14,7 @@ const apiKey = process.env['API_KEY'] as string
 
 function createPlacesApi(): BasePlacesApi {
     switch (currentApi) {
-        case "foursquare":
+        case ApiName.FOURSQUARE:
             return new FoursquarePlacesSearchApi(
                 maxAmountOfPlaces,
                 minAmountOfPlaces,
