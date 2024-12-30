@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import { nearbyPlacesService } from '@/services/places-nearby'
+import { nearbyPlacesService } from '@/services/nearby-places'
 import { Place } from "@/types";
 
 import { redis } from "@/redis";

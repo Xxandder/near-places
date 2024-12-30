@@ -5,8 +5,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { searchPlacesRouter } from './routes';
-
 import { exceptionHandler } from './middlewares'
+import { ApiPath } from '@/enums'
 
 
 
@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(searchPlacesRouter)
+app.use(ApiPath.NEARBY_PLACES, searchPlacesRouter)
 
 app.use(exceptionHandler)
 

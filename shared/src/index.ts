@@ -6,4 +6,7 @@ export {
     type Place,
  } from './types';
 
-export { HTTPMethod } from './enums';
+export { 
+    HTTPMethod,
+    ApiPath
+} from './enums';
