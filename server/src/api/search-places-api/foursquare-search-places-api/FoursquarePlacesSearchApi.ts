@@ -1,15 +1,15 @@
 import { HTTPMethod } from "@/enums"
 import { type RawPlace, type Coordinates} from "@/types"
 import { type PlacesResponse } from "./types"
-import { type BasePlacesApiConstructorParams } from '../types'
+import { type PlacesApiConfig } from '../types'
 import { SearchPlacesApiPath } from "./enums"
 import { placesApiMapper } from "../mappers"
 import { BasePlacesApi } from "../base-search-places-api/BaseSearchPlacesApi"
 
 class FoursquarePlacesSearchApi extends BasePlacesApi{
 
-    public constructor(params: BasePlacesApiConstructorParams){
-        super(params)
+    public constructor(config: PlacesApiConfig){
+        super(config)
     }
 
     async makeRequest({

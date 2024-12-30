@@ -1,5 +1,5 @@
 import { type Coordinates, type RawPlace } from "@/types";
-import { BasePlacesApiConstructorParams } from '../types'
+import { PlacesApiConfig } from '../types'
 import { BaseApi } from "../../base-api";
 
 abstract class BasePlacesApi extends BaseApi{
@@ -11,15 +11,15 @@ abstract class BasePlacesApi extends BaseApi{
     protected apiKey: string;
     protected baseUrl: string;
 
-    protected constructor(params: BasePlacesApiConstructorParams) {
-        super(params.baseUrl)
-        this.maxAmountOfPlaces = params.maxAmountOfPlaces
-        this.minAmountOfPlaces = params.minAmountOfPlaces
-        this.maxBatchSize = params.maxBatchSize
-        this.maxRadius = params.maxRadius
-        this.initialRadius = params.initialRadius
-        this.apiKey = params.apiKey
-        this.baseUrl = params.baseUrl
+    protected constructor(config: PlacesApiConfig) {
+        super(config.baseUrl)
+        this.maxAmountOfPlaces = config.maxAmountOfPlaces
+        this.minAmountOfPlaces = config.minAmountOfPlaces
+        this.maxBatchSize = config.maxBatchSize
+        this.maxRadius = config.maxRadius
+        this.initialRadius = config.initialRadius
+        this.apiKey = config.apiKey
+        this.baseUrl = config.baseUrl
     }
 
     protected abstract makeRequest({

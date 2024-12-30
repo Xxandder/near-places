@@ -1,5 +1,5 @@
 
-type BasePlacesApiConstructorParams = {
+type PlacesApiConfig = {
     maxAmountOfPlaces: number,
     minAmountOfPlaces: number,
     maxBatchSize: number,
@@ -9,4 +9,4 @@ type BasePlacesApiConstructorParams = {
     baseUrl: string
 }
 
-export { BasePlacesApiConstructorParams };
+export { PlacesApiConfig };

@@ -1,1 +1,1 @@
-export { BasePlacesApiConstructorParams } from './base-places-api-constructor-params'
+export { PlacesApiConfig } from './places-api-config'
