@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NearbyPlaces } from '@/pages/nearby-places/NearbyPlaces';
+import { NearbyPlaces } from '@/pages';
 
 const App: React.FC = () => {
     return <>

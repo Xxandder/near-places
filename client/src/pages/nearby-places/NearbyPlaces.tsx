@@ -1,9 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { Place } from '@/types';
-import { PlacesForm } from './components/places-form/PlacesForm';
-import { PlacesItems } from './components/places-items/PlacesItems';
-import { PlaceError } from './components/places-error/PlacesError';
+import { 
+   PlacesForm, 
+   PlacesItems, 
+   PlacesError } from './components';
+
 import { 
    nearbyPlacesObservable, 
    type NearbyPlacesState 
@@ -38,7 +40,7 @@ const NearbyPlaces: React.FC = () => {
       <div className={styles['nearby-places__data']}>
          {isLoading ? <Loader/> : 
          error || !nearbyPlaces.length ? 
-         <PlaceError message={error ?
+         <PlacesError message={error ?
                `${error}` :
                "No results found"}/> :
          <PlacesItems places={nearbyPlaces}/>}
