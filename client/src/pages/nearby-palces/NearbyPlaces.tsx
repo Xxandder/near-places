@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { Place } from '@/types';
 import { PlacesForm } from './components/places-form/PlacesForm';
 import { PlacesItems } from './components/places-items/PlacesItems';
 import { PlaceError } from './components/places-error/PlacesError';
-import { nearbyPlacesObservable } from '@/services';
+import { 
+   nearbyPlacesObservable, 
+   type NearbyPlacesState 
+} from '@/services/obserable';
 import { Loader } from '@/components/loader/Loader' 
 
 import * as styles from './styles.module.css'
@@ -14,12 +17,19 @@ const NearbyPlaces: React.FC = () => {
    const [error, setError] = useState<string | null>(null)
    const [isLoading, setIsLoading] = useState<boolean>(false)
 
-   
-   nearbyPlacesObservable.subscribe((state)=>{
-      setNearbyPlaces(state.data)
-      setError(state.error)
-      setIsLoading(state.isLoading)
-   })
+   const handleSubscription = useCallback((state: NearbyPlacesState) => {
+      setNearbyPlaces(state.data);
+      setError(state.error);
+      setIsLoading(state.isLoading);
+    }, []);
+  
+    useEffect(() => {
+      nearbyPlacesObservable.subscribe(handleSubscription);
+  
+      return () => {
+        nearbyPlacesObservable.unsubscribe(handleSubscription);
+      };
+    }, [handleSubscription]);
 
    return  <div>
     

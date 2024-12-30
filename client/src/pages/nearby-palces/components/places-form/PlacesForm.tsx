@@ -2,7 +2,7 @@ import React, { FormEvent, useState } from 'react';
 
 import * as styles from './styles.module.css';
 import { searchPlacesApi } from '@/api/search-places-api'
-import { nearbyPlacesObservable } from '@/services';
+import { nearbyPlacesObservable } from '@/services/obserable';
 
 const PlacesForm: React.FC = () => {
     const [latitude, setLatitude] = useState(0);
