@@ -38,7 +38,6 @@ abstract class BasePlacesApi extends BaseApi{
 
     public async getPlacesNearby(
         coordinates: Coordinates, 
-        limit = this.maxAmountOfPlaces
     ): Promise<RawPlace[]> {
        
         let currentRadius = this.initialRadius;
@@ -52,7 +51,6 @@ abstract class BasePlacesApi extends BaseApi{
             }
             response = await this.makeRequest({
                 coordinates,
-                limit,
                 radius: currentRadius
             })
             responseJson = await response.json()

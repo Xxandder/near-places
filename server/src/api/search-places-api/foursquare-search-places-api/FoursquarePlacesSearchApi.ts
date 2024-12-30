@@ -15,11 +15,9 @@ class FoursquarePlacesSearchApi extends BasePlacesApi{
     async makeRequest({
         coordinates,
         radius,
-        limit
     }: {
         coordinates: Coordinates,
         radius?: number,
-        limit?: number
     }): Promise<Response>{
         const headers = new Headers()
         headers.append('Authorization', this.apiKey)
@@ -30,7 +28,6 @@ class FoursquarePlacesSearchApi extends BasePlacesApi{
             headers,
             queryParams: {
                 ll: `${coordinates.latitude}%2C${coordinates.longitude}`,
-                limit: `${limit ?? this.maxAmountOfPlaces}`,
                 radius: `${radius}`
             }
         })
