@@ -1,18 +1,19 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 
-import dotenv from 'dotenv'; 
+import dotenv from 'dotenv';
 dotenv.config();
+
+import { port } from '@/config'
 
 import { searchPlacesRouter } from './routes';
 import { exceptionHandler } from './middlewares'
 import { ApiPath } from '@/enums'
 
 
-
 const app: Application = express();
 
-const PORT = process.env['PORT'] || 3000;
+const PORT = port || 3000;
 
 app.use(cors());
 app.use(express.json());
