@@ -1,4 +1,4 @@
-import { type Coordinates } from "./coordinates.type"
+import { type Coordinates } from "./coordinates"
 
 type Place = {
     name: string,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Place } from '../../../../types';
+import { Place } from '@/types';
 
 import * as styles from './styles.module.css';
 

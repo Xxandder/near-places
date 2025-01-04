@@ -1,4 +1,4 @@
-import { Coordinates, Place } from "../../types";
+import { Coordinates, Place } from "@/types";
 import { BaseApi } from "../base-api";
 import { SearchPlacesApiPath } from './enums';
 

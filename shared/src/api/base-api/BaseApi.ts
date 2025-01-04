@@ -1,7 +1,7 @@
 import { HTTPMethod } from "../../enums";
 import { type ValuesOf } from "../../types";
 
-type queryParamsType = Record<string, string>
+type QueryParams = Record<string, string>
 
 
 class BaseApi {
@@ -22,7 +22,7 @@ class BaseApi {
         method: ValuesOf<typeof HTTPMethod>,
         payload: BodyInit | null,
         headers: Headers,
-        queryParams: queryParamsType
+        queryParams: QueryParams
     }){
         const fullUrl = this.getFullEndpoint(path, queryParams)
 
@@ -36,7 +36,7 @@ class BaseApi {
 
     protected getFullEndpoint(
         path: string, 
-        queryParams: queryParamsType
+        queryParams: QueryParams
     ): string{
         let fullUrl = `${this.baseUrl}${path}`
         if(Object.keys(queryParams).length !== 0){

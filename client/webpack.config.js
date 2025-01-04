@@ -21,6 +21,10 @@ module.exports = {
     maxEntrypointSize: 300000,
   },
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@shared': path.resolve(__dirname, '../shared')
+    },
     extensions: ['.tsx', '.ts', '.js', '.css']
   },
   module: {

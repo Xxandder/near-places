@@ -1,17 +1,25 @@
-import { type Coordinates, type RawPlace } from "../../../types";
+import { type Coordinates, type RawPlace } from "@/types";
+import { PlacesApiConfig } from '../types'
 import { BaseApi } from "../../base-api";
 
 abstract class BasePlacesApi extends BaseApi{
-    protected constructor(
-        protected maxAmountOfPlaces: number,
-        protected minAmountOfPlaces: number,
-        protected maxBatchSize: number,
-        protected maxRadius: number,
-        protected initialRadius: number,
-        protected apiKey: string,
-        protected baseUrl: string
-    ) {
-        super(baseUrl)
+    protected maxAmountOfPlaces: number;
+    protected minAmountOfPlaces: number;
+    protected maxBatchSize: number;
+    protected maxRadius: number;
+    protected initialRadius: number;
+    protected apiKey: string;
+    protected baseUrl: string;
+
+    protected constructor(config: PlacesApiConfig) {
+        super(config.baseUrl)
+        this.maxAmountOfPlaces = config.maxAmountOfPlaces
+        this.minAmountOfPlaces = config.minAmountOfPlaces
+        this.maxBatchSize = config.maxBatchSize
+        this.maxRadius = config.maxRadius
+        this.initialRadius = config.initialRadius
+        this.apiKey = config.apiKey
+        this.baseUrl = config.baseUrl
     }
 
     protected abstract makeRequest({
@@ -30,7 +38,6 @@ abstract class BasePlacesApi extends BaseApi{
 
     public async getPlacesNearby(
         coordinates: Coordinates, 
-        limit = this.maxAmountOfPlaces
     ): Promise<RawPlace[]> {
        
         let currentRadius = this.initialRadius;
@@ -44,13 +51,11 @@ abstract class BasePlacesApi extends BaseApi{
             }
             response = await this.makeRequest({
                 coordinates,
-                limit,
                 radius: currentRadius
             })
             responseJson = await response.json()
             const placesLength = await this.getLength(responseJson)
-            if(placesLength < this.minAmountOfPlaces){
-                
+            if(placesLength <= this.minAmountOfPlaces){
                 radiusLowerBoundary = currentRadius
                 const multiplier = placesLength - lastFoundPlacesNumber ? 2 -
                  (this.minAmountOfPlaces - placesLength - lastFoundPlacesNumber) /

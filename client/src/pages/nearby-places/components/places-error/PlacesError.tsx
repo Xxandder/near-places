@@ -6,7 +6,7 @@ type Props = {
     message: string
 }
 
-const PlaceError: React.FC<Props> = ({message}) => { 
+const PlacesError: React.FC<Props> = ({message}) => { 
         
    return  <div className={styles['place-error']}>
       <p className={styles['place-error__text']}>{message}</p>
@@ -14,4 +14,4 @@ const PlaceError: React.FC<Props> = ({message}) => {
   
   };
 
-  export { PlaceError };
+  export { PlacesError };
