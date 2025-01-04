@@ -3,15 +3,19 @@ import { Request, Response, NextFunction } from 'express';
 import { z, ZodError } from 'zod'
 import { ApiError } from '../exceptions';
 import { HTTPStatusCode } from '../enums';
-import { ValidationSource } from './types';
+import { ValidationSource as ValidationSourceEnum } from './enums';
+import { ValidationSource as ValidationSourceType } from './types';
 
-const validationMiddleware = (schema: z.Schema, validationSource: ValidationSource) => {
-    return (req: Request, res: Response, next: NextFunction) => {
+const validationMiddleware = (schema: z.Schema, validationSource: ValidationSourceType) => {
+    return (req: Request, _res: Response, next: NextFunction) => {
         try {
-            if (validationSource === 'body') {
-                schema.parse(req.body);
-            } else if (validationSource === 'query') {
-                schema.parse(req.query);
+            switch(validationSource){
+                case ValidationSourceEnum.BODY:
+                    schema.parse(req.body);
+                    break;
+                case ValidationSourceEnum.QUERY:
+                    schema.parse(req.query);
+                    break;
             }
             next(); 
         } catch (error) {

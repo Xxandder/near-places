@@ -9,5 +9,6 @@ declare namespace NodeJS {
         MAX_RADIUS: number;
         INITIAL_RADIUS: number;
         COORDINATES_PRECISION: number;
+        PORT: number;
     }
 }

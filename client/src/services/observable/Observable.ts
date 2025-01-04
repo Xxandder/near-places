@@ -1,6 +1,4 @@
-
-
-type Observer<T> = (data: T) => void;
+import { type Observer } from "./types/observer";
 
 class Observable<T> {
   private observers: Observer<T>[] = [];
@@ -18,4 +16,4 @@ class Observable<T> {
   }
 }
 
-export { Observable };
+export { Observable, type Observer };

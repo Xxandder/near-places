@@ -1,11 +1,11 @@
 import { 
     type Coordinates, 
     type Place, 
-    type RawPlace } from "../../types";
+    type RawPlace } from "@/types";
 
-import { searchPlacesApi } from "../../api/search-places-api";
+import { searchPlacesApi } from "@/api/search-places-api";
 
-class PlacesNearby {
+class NearbyPlacesService {
 
     async getPlacesNearby(coordinates: Coordinates): Promise<Place[]>{
         const rawPlaces: RawPlace[] = await searchPlacesApi.getPlacesNearby(coordinates);
@@ -54,8 +54,6 @@ class PlacesNearby {
         return Math.round(Math.sqrt(deltaX ** 2 + deltaY ** 2));
     }
 
-
-    // TODO method for processing raw data
 }
 
-export { PlacesNearby };
+export { NearbyPlacesService };

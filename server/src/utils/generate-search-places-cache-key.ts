@@ -1,6 +1,5 @@
-import { Coordinates } from "../types";
-
-const coordinatesPrecision = Number(process.env['COORDINATES_PRECISION'])
+import { Coordinates } from "@/types";
+import { coordinatesPrecision } from "@/config";
 
 const generateSearchPlacesCacheKey = (coordinates: Coordinates) => {
     return `nearby-places:` + 

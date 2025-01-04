@@ -1,41 +1,23 @@
-import { HTTPMethod } from "../../../enums"
-import { type RawPlace, type Coordinates} from "../../../types"
+import { HTTPMethod } from "@/enums"
+import { type RawPlace, type Coordinates} from "@/types"
 import { type PlacesResponse } from "./types"
-import { SearchPlacesApiPath } from "./enums/search-places-api-path.enum"
+import { type PlacesApiConfig } from '../types'
+import { SearchPlacesApiPath } from "./enums"
 import { placesApiMapper } from "../mappers"
 import { BasePlacesApi } from "../base-search-places-api/BaseSearchPlacesApi"
 
 class FoursquarePlacesSearchApi extends BasePlacesApi{
 
-    public constructor(
-        maxAmountOfPlaces: number,
-        minAmountOfPlaces: number,
-        maxBatchSize: number,
-        maxRadius: number,
-        initialRadius: number,
-        apiKey: string,
-        baseUrl: string
-
-    ){
-        super(
-            maxAmountOfPlaces,
-            minAmountOfPlaces,
-            maxBatchSize,
-            maxRadius,
-            initialRadius,
-            apiKey,
-            baseUrl
-        )
+    public constructor(config: PlacesApiConfig){
+        super(config)
     }
 
     async makeRequest({
         coordinates,
         radius,
-        limit
     }: {
         coordinates: Coordinates,
         radius?: number,
-        limit?: number
     }): Promise<Response>{
         const headers = new Headers()
         headers.append('Authorization', this.apiKey)
@@ -46,7 +28,6 @@ class FoursquarePlacesSearchApi extends BasePlacesApi{
             headers,
             queryParams: {
                 ll: `${coordinates.latitude}%2C${coordinates.longitude}`,
-                limit: `${limit ?? this.maxAmountOfPlaces}`,
                 radius: `${radius}`
             }
         })
